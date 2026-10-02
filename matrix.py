@@ -74,11 +74,12 @@ def inverse_by_gauss_jordan(matrix):
     return inverse
 
 def print_matrix(matrix, title=""):
-    """행렬 출력 포맷팅 함수"""
+    """행렬 출력 포맷팅 함수 (-0.0000 방지 적용)"""
     if title:
         print(f"--- {title} ---")
     for row in matrix:
-        formatted_row = [f"{val:8.4f}" for val in row]
+        # 절댓값이 1e-9보다 작은 미세한 오차 값은 0.0으로 처리하여 -0 부호 제거
+        formatted_row = [f"{0.0 if abs(val) < 1e-9 else val:8.4f}" for val in row]
         print("[" + ", ".join(formatted_row) + "]")
 
 def compare_matrices(m1, m2, tol=1e-9):
