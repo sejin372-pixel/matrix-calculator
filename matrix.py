@@ -112,7 +112,6 @@ def verify_identity_matrix(matrix, tol=1e-9):
                 return False
     return True
 
-# ----------------------------------------
 
 def main():
     try:
